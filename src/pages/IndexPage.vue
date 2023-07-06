@@ -4,15 +4,6 @@
       class="app-container"
       :class="{ 'app-mobile': isDevice, 'app-mobile-dark': theme === 'dark' }"
     >
-      <!-- <div>
-				<button @click="resetData">
-					Clear Data
-				</button>
-				<button :disabled="updatingData" @click="addData">
-					Add Data
-				</button>
-			</div> -->
-
       <span
         v-if="showOptions"
         class="user-logged"
@@ -24,7 +15,6 @@
         v-if="showOptions && liveUsers.length < 0"
         v-model="currentUserId"
       >
-        <!-- showOptions && liveUsers.length < 0 -->
         <option v-for="user in users" :key="user._id" :value="user._id">
           {{ user.username }}
         </option>
@@ -35,16 +25,6 @@
           {{ user.username }}
         </option>
       </select>
-
-      <!-- <div v-if="showOptions" class="button-theme">
-        <button class="button-light" @click="theme = 'light'">Light</button>
-        <button class="button-dark" @click="theme = 'dark'">Dark</button>
-        <button class="button-github">
-          <a href="https://github.com/antoine92190/vue-advanced-chat">
-            <img src="@/assets/github.svg" />
-          </a>
-        </button>
-      </div> -->
     </div>
     <ChatComponent
       v-if="showChat"
@@ -142,12 +122,6 @@ export default {
           firestoreService.deleteRoom(room.id);
         });
       });
-
-      // firestoreService.getAllUsers().then(({ data }) => {
-      //   data.forEach((user) => {
-      //     firestoreService.deleteUser(user.id);
-      //   });
-      // });
     },
     async addData() {
       this.updatingData = true;
